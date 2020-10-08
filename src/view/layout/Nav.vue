@@ -12,3 +12,12 @@
         </div>
     </nav>
 </template>
+
+<style scoped>
+    .page-item.active .page-link {
+        z-index: 1;
+        color: #fff !important;
+        background-color: #46d286 !important;
+        border-color: #35d080 !important;
+    }
+</style>
