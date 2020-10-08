@@ -19,7 +19,7 @@
             <div class="body-2 pt-3">This wallet is built on the Celo Alfajores Testnet.</div>
         </div>
 
-        <button v-if="wallet" @click="logOut()"
+        <button v-if="wallet && stable.balance" @click="logOut()"
                 style="position: absolute;top: 233px;right: 151px;background-color: tan !important;height: 36px;padding: 5px 11px;color:#fff;">
             Logout
         </button>
@@ -36,7 +36,8 @@
       name: "Header",
       computed: {
          ...mapGetters([
-             'wallet'
+             'wallet',
+             'stable'
          ])
       },
       methods: {
