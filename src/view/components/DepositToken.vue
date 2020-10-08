@@ -15,7 +15,7 @@
             <div class="subheading m-3 mb-0 pb-2 pt-2">Address</div>
             <div class="address-inputContainer mt-0 m-3">
                 <input class="address-input" disabled :value="swap.address">
-                <button class="copy-address">
+                <button class="copy-address" @click="copy(swap.address)">
                     <img alt="copy" class="copy-icon" src="/images/copy.png"/>
                 </button>
             </div>
@@ -32,6 +32,7 @@
 
     import {bus} from '../../main';
     import VueQrcode from 'vue-qrcode';
+
 
    export default {
       name: "ReceiveModal",
@@ -52,6 +53,14 @@
       methods: {
          closeModal() {
             this.utils.showModal = false;
+         },
+         copy(v) {
+           this.$copyText(v).then(function (e) {
+              alert('Copied');
+           }, function (e) {
+              alert('Can not copy');
+              console.log(e)
+           })
          }
       },
       mounted() {

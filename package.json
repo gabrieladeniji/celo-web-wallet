@@ -25,6 +25,7 @@
     "ofcold-security-code": "^1.0.10",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.21",
+    "vue-clipboard2": "^0.3.1",
     "vue-cool-select": "^2.0.1",
     "vue-loading-overlay": "^3.4.2",
     "vue-material-design-icons": "^2.6.0",

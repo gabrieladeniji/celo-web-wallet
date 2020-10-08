@@ -22,6 +22,7 @@ import './core/plugins/vuelidate';
 import './core/plugins/cool-select';
 import './core/plugins/range-slider';
 import './core/plugins/tabs-component';
+import './core/plugins/vue-clipboard2';
 import './core/plugins/loading-overlay';
 import './core/plugins/pretty-checkbox';
 
