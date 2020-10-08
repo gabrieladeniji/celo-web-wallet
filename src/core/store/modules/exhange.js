@@ -7,19 +7,23 @@ export const FETCH_STABLE_BALANCE = 'fetchStableTokenBalance';
 export const SEND_GOLD_TOKEN = 'sendGoldToken';
 export const SEND_STABLE_TOKEN = 'sendStableToken';
 export const SWAP_GOLD_TOKEN = 'swapStableToken';
+export const CLEAR_ASSETS_BALANCE = 'clearAssetsBalance';
 
 // mutations
 export const SET_GOLD_BALANCE = 'setGoldTokenBalance';
 export const SET_STABLE_BALANCE = 'setStableTokenBalance';
+export const RESET_BALANCE = 'resetTokenBalance';
 
 
 const state = {
    gold: {
       balance: 0,
+      done: false,
       transactions: []
    },
    stable: {
       balance: 0,
+      done: false,
       transactions: []
    }
 };
@@ -35,10 +39,28 @@ const getters = {
 
 const mutations = {
    [SET_GOLD_BALANCE](state, balance) {
-      state.gold = {balance};
+      state.gold = {
+         balance,
+         done: true
+      };
    },
    [SET_STABLE_BALANCE](state, balance) {
-      state.stable = {balance};
+      state.stable = {
+         balance,
+         done: true,
+         transactions: []
+      };
+   },
+   [RESET_BALANCE](state) {
+      state.gold = {
+         balance: 0,
+         done: false
+      };
+      state.stable = {
+         balance: 0,
+         done: false,
+         transactions: []
+      };
    }
 };
 
@@ -109,6 +131,9 @@ const actions = {
             reject(`[swapGoldToken] => ${err}`);
          });
       });
+   },
+   [CLEAR_ASSETS_BALANCE](context) {
+      context.commit(RESET_BALANCE);
    }
 };
 

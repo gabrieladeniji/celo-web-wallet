@@ -53,15 +53,13 @@
          appImportWallet: ImportWallet
       },
       methods: {
-         createWallet() {
+         async createWallet() {
             let loader = this.$loading.show({container: this.$refs.createWallet});
-            setTimeout(async () => {
-               await this.$store.dispatch(CREATE_WALLET);
-               await this.$store.dispatch(FETCH_GOLD_BALANCE);
-               await this.$store.dispatch(FETCH_STABLE_BALANCE);
-               loader.hide();
-               this.$router.push({ name: 'goldToken' });
-            }, 1000);
+            await this.$store.dispatch(CREATE_WALLET);
+            await this.$store.dispatch(FETCH_GOLD_BALANCE);
+            await this.$store.dispatch(FETCH_STABLE_BALANCE);
+            loader.hide();
+            this.$router.push({name: 'goldToken'});
          },
          importWallet() {
             bus.$emit('open_import_wallet', {});

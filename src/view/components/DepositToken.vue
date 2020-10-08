@@ -9,18 +9,18 @@
             </div>
             <div style="background: #e2ebea3d;padding: 30px 0;border-bottom: 1px solid rgba(0, 71, 91, 0.1);">
                 <div class="wallet-qrcodeWrapper">
-                    <vue-qrcode :value="swap.address" />
+                    <qrcode-vue :value="swap.address" size="150" level="H" />
                 </div>
             </div>
             <div class="subheading m-3 mb-0 pb-2 pt-2">Address</div>
             <div class="address-inputContainer mt-0 m-3">
-                <input class="address-input" disabled :value="swap.address">
-                <button class="copy-address" @click="copy(swap.address)">
+                <input :value="swap.address" class="address-input" disabled>
+                <button @click="copy(swap.address)" class="copy-address">
                     <img alt="copy" class="copy-icon" src="/images/copy.png"/>
                 </button>
             </div>
-            <a class="pl-3" href="https://celo.org/developers/faucet" target="_blank"
-               style="color: #1d77d8 !important;font-weight: 500;text-decoration: underline;">
+            <a class="pl-3" href="https://celo.org/developers/faucet"
+               style="color: #1d77d8 !important;font-weight: 500;text-decoration: underline;" target="_blank">
                 Fund your wallet (Celo Faulcet)
             </a>
         </v-card>
@@ -30,9 +30,8 @@
 
 <script>
 
-    import {bus} from '../../main';
-    import VueQrcode from 'vue-qrcode';
-
+   import {bus} from '../../main';
+   import QrcodeVue from 'qrcode.vue'
 
    export default {
       name: "ReceiveModal",
@@ -48,19 +47,19 @@
          }
       },
       components: {
-         VueQrcode
+         QrcodeVue
       },
       methods: {
          closeModal() {
             this.utils.showModal = false;
          },
          copy(v) {
-           this.$copyText(v).then(function (e) {
-              alert('Copied');
-           }, function (e) {
-              alert('Can not copy');
-              console.log(e)
-           })
+            this.$copyText(v).then(function (e) {
+               alert('Copied');
+            }, function (e) {
+               alert('Can not copy');
+               console.log(e)
+            })
          }
       },
       mounted() {

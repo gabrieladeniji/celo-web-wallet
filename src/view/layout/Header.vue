@@ -19,7 +19,7 @@
             <div class="body-2 pt-3">This wallet is built on the Celo Alfajores Testnet.</div>
         </div>
 
-        <button v-if="wallet && stable.balance" @click="logOut()"
+        <button v-if="wallet && stable.done && gold.done" @click="logOut()"
                 style="position: absolute;top: 233px;right: 151px;background-color: tan !important;height: 36px;padding: 5px 11px;color:#fff;">
             Logout
         </button>
@@ -31,18 +31,21 @@
 
    import {mapGetters} from 'vuex';
    import {CLEAR_WALLET} from '../../core/store/modules/auth';
+   import {CLEAR_ASSETS_BALANCE} from '../../core/store/modules/exhange';
 
    export default {
       name: "Header",
       computed: {
          ...mapGetters([
              'wallet',
-             'stable'
+             'stable',
+             'gold'
          ])
       },
       methods: {
          async logOut() {
             await this.$store.dispatch(CLEAR_WALLET);
+            await this.$store.dispatch(CLEAR_ASSETS_BALANCE);
             this.$router.push({ name: 'index' });
          }
       }

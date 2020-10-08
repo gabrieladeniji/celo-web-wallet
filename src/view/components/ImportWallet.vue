@@ -24,7 +24,7 @@
                     You can use this testing PK
                 </div>
                 <p class="body-2">
-                    0xbb82646af650a7086f3ce35f01385fefef3ded9bc893256029477b8dd45ba4b4 <br />
+                    0xbb82646af650a7086f3ce35f01385fefef3ded9bc893256029477b8dd45ba4b4 <br/>
                     0x40ebc0d835965269fe26f78246d63a0c91d660fa477f61425487cdd271e2d65c
                 </p>
             </div>
@@ -37,7 +37,7 @@
    import {bus} from '../../main';
    import {required} from 'vuelidate/lib/validators';
    import {IMPORT_WALLET} from '../../core/store/modules/auth';
-   import {FETCH_GOLD_BALANCE,FETCH_STABLE_BALANCE} from '../../core/store/modules/exhange';
+   import {FETCH_GOLD_BALANCE, FETCH_STABLE_BALANCE} from '../../core/store/modules/exhange';
 
    export default {
       name: "ImportWallet",
@@ -68,18 +68,16 @@
          },
          importKey() {
             this.resetField();
-            let loader = this.$loading.show({ container: this.$refs.importWallet });
-            setTimeout(() => {
-               this.$store.dispatch(IMPORT_WALLET, this.swap.private_key).then(async () => {
-                  await this.$store.dispatch(FETCH_GOLD_BALANCE);
-                  await this.$store.dispatch(FETCH_STABLE_BALANCE);
-                  loader.hide();
-                  this.$router.push({name: 'goldToken'});
-               }).catch((err) => {
-                  loader.hide();
-                  this.swap.error_msg = err;
-               })
-            }, 1000);
+            let loader = this.$loading.show({container: this.$refs.importWallet});
+            this.$store.dispatch(IMPORT_WALLET, this.swap.private_key).then(async () => {
+               await this.$store.dispatch(FETCH_GOLD_BALANCE);
+               await this.$store.dispatch(FETCH_STABLE_BALANCE);
+               loader.hide();
+               this.$router.push({name: 'goldToken'});
+            }).catch((err) => {
+               loader.hide();
+               this.swap.error_msg = err;
+            })
          },
          resetField() {
             this.swap.error_msg = '';
