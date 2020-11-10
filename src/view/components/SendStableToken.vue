@@ -1,5 +1,5 @@
 <template>
-    <v-dialog v-model="utils.show_modal" width="620">
+    <v-dialog v-model="utils.show_modal" width="500">
         <v-card class="pb-2">
 
             <div class="card-header">

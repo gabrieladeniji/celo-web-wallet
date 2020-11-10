@@ -26,9 +26,6 @@ import './core/plugins/vue-clipboard2';
 import './core/plugins/loading-overlay';
 import './core/plugins/pretty-checkbox';
 
-// Css
-import '../public/css/custom.css';
-
 
 new Vue({
    router,

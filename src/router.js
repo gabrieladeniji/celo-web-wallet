@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Index from './view/pages/index.vue';
+
+// components
+import Index from './view/pages/Wallet.vue';
 import GoldToken from './view/pages/GoldToken';
 import StableToken from './view/pages/StableToken';
-// import Wallets from './view/pages/wallets.vue';
 
+// store
 import store from './core/store/store';
 
 
@@ -20,21 +22,25 @@ function requireAuth(to, from, next) {
 
 const routes = [
    {
-      path: '/',
-      name: 'index',
-      component: Index
-   },
-   {
-      path: '/gold-token',
-      name: 'goldToken',
-      component: GoldToken,
-      beforeEnter: requireAuth
-   },
-   {
-      path: '/stable-token',
-      name: 'stableToken',
-      component: StableToken,
-      beforeEnter: requireAuth
+      path: '/', component:() => import('./view/layout/Layout'), children: [
+         {
+            path: '/',
+            name: 'index',
+            component: Index
+         },
+         {
+            path: '/gold-token',
+            name: 'goldToken',
+            component: GoldToken,
+            beforeEnter: requireAuth
+         },
+         {
+            path: '/stable-token',
+            name: 'stableToken',
+            component: StableToken,
+            beforeEnter: requireAuth
+         }
+      ]
    }
 ];
 

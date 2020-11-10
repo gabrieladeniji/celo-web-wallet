@@ -1,5 +1,5 @@
 <template>
-    <v-dialog v-model="utils.showModal" width="620">
+    <v-dialog v-model="utils.showModal" width="500">
         <v-card class="pb-4">
             <div class="card-header">
                 <h5 class="card-title mb-0">Receive {{ swap.name }}</h5>
