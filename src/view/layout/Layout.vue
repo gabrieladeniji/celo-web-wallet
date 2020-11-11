@@ -39,7 +39,8 @@
    import SendGoldToken from '../components/SendGoldToken';
    import SendStableToken from '../components/SendStableToken';
 
-   import {mapGetters} from 'vuex'
+   import {mapGetters} from 'vuex';
+   import {FETCH_LOCALE} from '../../core/store/modules/locale';
 
    export default {
       name: "Layout",
@@ -59,6 +60,9 @@
              'stable',
              'wallet'
          ])
+      },
+      async beforeMount() {
+         await this.$store.dispatch(FETCH_LOCALE);
       }
    }
 </script>

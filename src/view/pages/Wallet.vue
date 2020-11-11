@@ -6,10 +6,10 @@
                     <img src="/images/new_wallet.png" style="width: 65px;height: 65px;" alt="icon" />
                 </div>
                 <div class="coinWallet-details">
-                    <div class="wallet-coin-name">Create a new wallet</div>
-                    <p class="body-1 pt-1">Generate your unique celo wallet in minutes</p>
+                    <div class="wallet-coin-name">{{ $t('pages.wallet.create') }}</div>
+                    <p class="body-1 pt-1">{{ $t('pages.wallet.generate') }}</p>
                     <p class="get-started-btn">
-                        Get Started
+                        {{ $t('pages.wallet.getStarted') }}
                         <img src="/images/right-arrow.png" class="pl-2" width="30" alt="icon" />
                     </p>
                 </div>
@@ -21,10 +21,10 @@
                     <img src="/images/import_wallet.png" style="width: 60px;height: 60px;" alt="icon" />
                 </div>
                 <div class="coinWallet-details">
-                    <div class="wallet-coin-name">Import my wallet</div>
-                    <p class="body-1 pt-1">Import your celo wallet with your private key</p>
+                    <div class="wallet-coin-name">{{ $t('pages.wallet.importMyWallet') }}</div>
+                    <p class="body-1 pt-1">{{ $t('pages.wallet.importYourCelo') }}</p>
                     <p class="get-started-btn">
-                        Get Started
+                        {{ $t('pages.wallet.getStarted') }}
                         <img src="/images/right-arrow.png" class="pl-2" width="30" alt="icon" />
                     </p>
                 </div>

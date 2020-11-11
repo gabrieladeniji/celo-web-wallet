@@ -1,7 +1,9 @@
 <template>
     <div class="text-center pb-5 pt-4">
-        <h1>Celo web wallet</h1>
-        <p class="font-weight-medium subheading pt-2">Easy way to store, send, receive and hold celo tokens.</p>
+        <h1>{{ $t('layout.header.celo_web') }}</h1>
+        <p class="font-weight-medium subheading pt-2">
+            {{ $t('layout.header.easy_way') }}
+        </p>
     </div>
 </template>
 

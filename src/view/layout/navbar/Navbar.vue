@@ -4,7 +4,7 @@
             <img alt="Paychant" class="p_brand_logo" src="/images/Celo_Logo_Color.svg" width="150"/>
             <span style="margin-left: -7px;position: relative;top: 3px;font-size: 21px;font-weight: 200;color: #6c757d;">|</span>
             <span class=" text-muted"
-                  style="font-size: 12px;position: relative;top: 2px;padding-left: 5px;">Wallet</span>
+                  style="font-size: 12px;position: relative;top: 2px;padding-left: 5px;">{{ $t('layout.navbar.wallet') }}</span>
         </a>
 
         <!-- Large Screen Header -->
@@ -13,45 +13,27 @@
                 <li class="nav-item dropdown dropdown-country">
                     <div aria-expanded="true" aria-haspopup="true" class="nav-link" data-toggle="dropdown"
                          id="dropdown" style="color: #42566b !important;">
-                        <span class="ml-2 c-languages-dropdown">English
+                        <span class="ml-2 c-languages-dropdown"> {{ utils.locale.name }}
                             <span class="pull-right">
-                                <span class="ml-2 flag-icon flag-icon-gb country-flag-icon"></span>
+                                <span :class="`ml-2 flag-icon flag-icon-${locale.iso2} country-flag-icon`"></span>
                                 <i class="pl-2 fa fa-chevron-down c-Nav-dropdown-fa"></i>
                             </span>
                         </span>
                     </div>
                     <div aria-labelledby="dropdown" class="dropdown-menu country-dropdown-menu">
-                        <a class="country-dropdown-item dropdown-item" href="#">
-                            <span class="pr-2">German</span>
-                            <div class="pull-right flag-icon flag-icon-de country-flag-icon"
-                                 style=" font-size: inherit !important;"></div>
-                        </a>
-                        <a class="country-dropdown-item dropdown-item" href="#">
-                            <span class="pr-2">繁體中文</span>
-                            <div class="pull-right flag-icon flag-icon-cn country-flag-icon"
-                                 style=" font-size: inherit !important;"></div>
-                        </a>
-                        <a class="country-dropdown-item dropdown-item" href="#">
-                            <span class="pr-2">Français</span>
-                            <div class="pull-right flag-icon flag-icon-fr country-flag-icon"
-                                 style=" font-size: inherit !important;"></div>
-                        </a>
-                        <a class="country-dropdown-item dropdown-item" href="#">
-                            <span class="pr-2">Español</span>
-                            <div class="pull-right flag-icon flag-icon-es country-flag-icon"
-                                 style=" font-size: inherit !important;"></div>
-                        </a>
-                        <a class="country-dropdown-item dropdown-item" href="#">
-                            <span class="pr-2">Русский</span>
-                            <div class="pull-right flag-icon flag-icon-ru country-flag-icon"
-                                 style=" font-size: inherit !important;"></div>
-                        </a>
+                        <template v-for="el in utils.localizations">
+                            <a class="country-dropdown-item dropdown-item" @click="swapLocalization(el)"
+                               :class="{'dropdown-active': el.iso2 === utils.locale.iso2}">
+                                <span class="pr-2">{{ el.name }}</span>
+                                <div :class="`pull-right flag-icon flag-icon-${el.iso2} country-flag-icon`" style=" font-size: inherit !important;"></div>
+                            </a>
+                        </template>
                     </div>
                 </li>
                 <li v-if="wallet && stable.done && gold.done">
                     <button @click="logOut()"
                             style="margin-top: 30px;margin-left: 20px;height: 36px;padding: 5px 11px;color: rgb(46 51 56);border: 1px solid #2e3338;border-radius: 6px;">
-                        Logout
+                        {{ $t('layout.navbar.logout') }}
                     </button>
                 </li>
             </ul>
@@ -64,7 +46,7 @@
                 <li v-if="wallet && stable.done && gold.done">
                     <button @click="logOut()"
                             style="margin-top: 0;margin-right: 20px;height: 36px;padding: 5px 11px;color: rgb(46 51 56);border: 1px solid #2e3338;border-radius: 6px;">
-                        Logout
+                        {{ $t('layout.navbar.logout') }}
                     </button>
                 </li>
             </ul>
@@ -77,13 +59,33 @@
 
    import {mapGetters} from 'vuex';
    import {CLEAR_WALLET} from '../../../core/store/modules/auth';
+   import {SET_LOCALE} from "../../../core/store/modules/locale";
    import {CLEAR_ASSETS_BALANCE} from '../../../core/store/modules/exhange';
 
     export default {
        name: "Navbar",
+       data() {
+          return {
+             utils: {
+                localizations: [
+                   {name: 'English', iso2: 'gb'},
+                   {name: 'German', iso2: 'de'},
+                   {name: '繁體中文', iso2: 'cn'},
+                   {name: 'Français', iso2: 'fr'},
+                   {name: 'Español', iso2: 'es'},
+                   {name: 'Русский', iso2: 'ru'}
+                ],
+                locale: {
+                   iso2: 'gb',
+                   name: 'English',
+                }
+             }
+          }
+       },
        computed: {
           ...mapGetters([
              'gold',
+             'locale',
              'wallet',
              'stable',
           ])
@@ -93,12 +95,25 @@
              await this.$store.dispatch(CLEAR_WALLET);
              await this.$store.dispatch(CLEAR_ASSETS_BALANCE);
              this.$router.push({name: 'index'});
+          },
+          async swapLocalization(el) {
+             this.utils.locale.iso2 = el.iso2;
+             this.utils.locale.name = el.name;
+             await this.$store.dispatch(SET_LOCALE, this.utils.locale);
+             window.location.reload();
           }
+       },
+       created() {
+          this.utils.locale = this.locale;
        }
     }
 </script>
 
 <style scoped>
+    a.dropdown-active {
+        background: #9fcdff;
+    }
+
     .page-item.active .page-link {
         z-index: 1;
         color: #fff !important;

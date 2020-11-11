@@ -3,10 +3,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <router-link class="page-item" active-class="active" tag="li" to="/gold-token">
-                    <a class="page-link">CELO GOLD WALLET</a>
+                    <a class="page-link">{{ $t('layout.tabHeader.celo_gold') }}</a>
                 </router-link>
                 <router-link class="page-item" active-class="active" tag="li" to="/stable-token">
-                    <a class="page-link">CELO USD WALLET</a>
+                    <a class="page-link">{{ $t('layout.tabHeader.celo_usd') }}</a>
                 </router-link>
             </ul>
         </div>

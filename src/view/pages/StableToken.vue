@@ -13,18 +13,16 @@
                     </div>
                     <div class="coinWallet-details" style="max-width: inherit !important;">
                         <div class="pb-2" style="color: rgb(152, 161, 178);font-size: 16px;">
-                            Celo USD Balance
+                            {{ $t('pages.stableToken.celoUsdBalance') }}
                         </div>
                         <div>
                             <span style="font-size: 20px;">{{ stable.balance }} cUSD</span>
-                            <!--<span class="pl-1 text-muted">($0.00)</span>-->
                         </div>
                         <div class="coinWallet-actionBtns mt-3">
-                            <div @click="openSendModal()" class="btn-deposit">Send</div>
-                            <div @click="openDepositModal()" class="btn-deposit">Deposit</div>
-                            <!--<div @click=openSwapModal() class="btn-deposit">Swap</div>-->
+                            <div @click="openSendModal()" class="btn-deposit">{{ $t('pages.stableToken.send') }}</div>
+                            <div @click="openDepositModal()" class="btn-deposit">{{ $t('pages.stableToken.deposit') }}</div>
                         </div>
-                        <div class="font-weight-bold body-2 pt-4">Wallet private key</div>
+                        <div class="font-weight-bold body-2 pt-4">{{ $t('pages.stableToken.walletPrivateKey') }}</div>
                         <p class="body-2 text-muted">
                             {{wallet.private_key}}
                         </p>
@@ -32,10 +30,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Transaction history -->
-        <app-transaction-history />
-
     </div>
 </template>
 

@@ -25,10 +25,12 @@ import './core/plugins/tabs-component';
 import './core/plugins/vue-clipboard2';
 import './core/plugins/loading-overlay';
 import './core/plugins/pretty-checkbox';
+import i18n from "@/core/plugins/vue-i18n";
 
 
 new Vue({
-   router,
+   i18n,
    store,
+   router,
    render: h => h(App)
 }).$mount('#app');
