@@ -37,5 +37,31 @@ export const locale = {
          deposit: 'Dépôt',
          walletPrivateKey: 'Clé privée du portefeuille'
       }
+   },
+   modals: {
+      send: {
+         send: 'Envoyer',
+         receivingAddress: 'Adresse de réception',
+         receivingAddressReq: 'Adresse du destinataire requise',
+         howMuchDoYouWantToSend: 'Combien voulez-vous envoyer',
+         amountIsRequired: 'Le montant est requis',
+         amountIsNotValid: 'Le montant n\'est pas valide',
+         amountIsNotSufficient: 'Le montant n\'est pas suffisant!',
+         successful: 'Réussi',
+         transactionSent: 'Transaction envoyée.',
+         checkTransactionOnBlockscout: 'Vérifier la transaction sur blockscout'
+      },
+      deposit: {
+         receive: 'Recevoir',
+         address: 'Adresse',
+         fundYourWallet: 'Financer votre portefeuille'
+      },
+      wallet: {
+         accessWalletBy: 'Accéder au portefeuille par clé privée',
+         enterPrivateKey: 'Entrez la clé privée',
+         privateKeyIsRequired: 'Une clé privée est requise',
+         next: 'Suivant',
+         youCanUseThisTesting: 'Vous pouvez utiliser cette clé privée de test'
+      }
    }
 };

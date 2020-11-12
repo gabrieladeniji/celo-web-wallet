@@ -37,5 +37,31 @@ export const locale = {
          deposit: 'Anzahlung',
          walletPrivateKey: 'Privater Schlüssel für die Brieftasche'
       }
+   },
+   modals: {
+      send: {
+         send: 'Senden',
+         receivingAddress: 'Empfangsadresse',
+         receivingAddressReq: 'Empfängeradresse erforderlich',
+         howMuchDoYouWantToSend: 'Wie viel möchten Sie senden',
+         amountIsRequired: 'Menge ist erforderlich',
+         amountIsNotValid: 'Betrag ist ungültig',
+         amountIsNotSufficient: 'Menge reicht nicht aus!',
+         successful: 'Erfolgreich',
+         transactionSent: 'Transaktion gesendet.',
+         checkTransactionOnBlockscout: 'Überprüfen Sie die Transaktion auf Blockscout'
+      },
+      deposit: {
+         receive: 'Erhalten',
+         address: 'Adresse',
+         fundYourWallet: 'Finanzieren Sie Ihre Brieftasche'
+      },
+      wallet: {
+         accessWalletBy: 'Greifen Sie mit dem privaten Schlüssel auf die Brieftasche zu',
+         enterPrivateKey: 'Geben Sie den privaten Schlüssel ein',
+         privateKeyIsRequired: 'Privater Schlüssel ist erforderlich',
+         next: 'Nächster',
+         youCanUseThisTesting: 'Sie können diesen privaten Testschlüssel verwenden'
+      }
    }
 };

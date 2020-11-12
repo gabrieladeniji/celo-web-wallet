@@ -2,26 +2,30 @@
     <v-dialog v-model="utils.showModal" width="500">
         <v-card class="pb-2">
             <div class="card-header">
-                <h5 class="card-title mb-0">Access wallet by Private Key</h5>
+                <h5 class="card-title mb-0">{{ $t('modals.wallet.accessWalletBy') }}</h5>
                 <div @click="closeModal()" class="closeIcon-container">
                     <img alt="close" class="close-icon" src="/images/close.png"/>
                 </div>
             </div>
             <div class="m-5" ref="importWallet">
-                <div class="text-left pb-2">Enter Private Key</div>
+                <div class="text-left pb-2">
+                   {{ $t('modals.wallet.enterPrivateKey') }}
+                </div>
                 <v-text-field @input="onChangePrivateKey" solo v-model.trim="swap.private_key"></v-text-field>
-                <div class="error-text" v-if="!$v.swap.private_key.required">Private key is required</div>
+                <div class="error-text" v-if="!$v.swap.private_key.required">
+                   {{ $t('modals.wallet.privateKeyIsRequired') }}
+                </div>
                 <div class="error-text" v-if="swap.error_msg">{{swap.error_msg}}</div>
                 <div class="text-center">
                     <button :class="{'disabled': !$v.swap.private_key.required}" @click="importKey()"
                             class="btn-custom text-center m-auto mt-2">
-                        Next
+                       {{ $t('modals.wallet.next') }}
                     </button>
                 </div>
             </div>
             <div class="m-3">
                 <div class="font-weight-bold body-2 text-muted">
-                    You can use this testing PK
+                   {{ $t('modals.wallet.youCanUseThisTesting') }}
                 </div>
                 <p class="text-muted pt-2" style="font-size: 12px">
                     0xbb82646af650a7086f3ce35f01385fefef3ded9bc893256029477b8dd45ba4b4 <br/>

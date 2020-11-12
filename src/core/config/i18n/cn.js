@@ -37,5 +37,31 @@ export const locale = {
          deposit: '存款',
          walletPrivateKey: '钱包私钥'
       }
+   },
+   modals: {
+      send: {
+         send: '发送',
+         receivingAddress: '收货地址',
+         receivingAddressReq: '收件人地址为必填项',
+         howMuchDoYouWantToSend: '您要寄多少',
+         amountIsRequired: '金额为必填项',
+         amountIsNotValid: '金额无效',
+         amountIsNotSufficient: '金额不够！',
+         successful: '成功的',
+         transactionSent: '交易已发送。',
+         checkTransactionOnBlockscout: '在blockcout上检查交易'
+      },
+      deposit: {
+         receive: '接收',
+         address: '地址',
+         fundYourWallet: '存钱'
+      },
+      wallet: {
+         accessWalletBy: '通过私钥访问钱包',
+         enterPrivateKey: '输入私钥',
+         privateKeyIsRequired: '需要私钥',
+         next: '下一个',
+         youCanUseThisTesting: '您可以使用此测试私钥'
+      }
    }
 };

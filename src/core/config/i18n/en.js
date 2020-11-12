@@ -37,5 +37,31 @@ export const locale = {
          deposit: 'Deposit',
          walletPrivateKey: 'Wallet private key'
       }
+   },
+   modals: {
+      send: {
+         send: 'Send',
+         receivingAddress: 'Receiving address',
+         receivingAddressReq: 'Receiver address required',
+         howMuchDoYouWantToSend: 'How much do you want to send',
+         amountIsRequired: 'Amount is required',
+         amountIsNotValid: 'Amount is not valid',
+         amountIsNotSufficient: 'Amount is not sufficient!',
+         successful: 'Successful',
+         transactionSent: 'Transaction sent.',
+         checkTransactionOnBlockscout: 'Check transaction on blockscout'
+      },
+      deposit: {
+         receive: 'Receive',
+         address: 'Address',
+         fundYourWallet: 'Fund your wallet'
+      },
+      wallet: {
+         accessWalletBy: 'Access wallet by Private Key',
+         enterPrivateKey: 'Enter Private Key',
+         privateKeyIsRequired: 'Private key is required',
+         next: 'Next',
+         youCanUseThisTesting: 'You can use this testing Private Key'
+      }
    }
 };

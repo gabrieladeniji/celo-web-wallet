@@ -37,5 +37,31 @@ export const locale = {
          deposit: 'Депозит',
          walletPrivateKey: 'Приватный ключ кошелька'
       }
+   },
+   modals: {
+      send: {
+         send: 'послать',
+         receivingAddress: 'Адрес получения',
+         receivingAddressReq: 'Требуется адрес получателя',
+         howMuchDoYouWantToSend: 'Сколько вы хотите отправить',
+         amountIsRequired: 'Требуется сумма',
+         amountIsNotValid: 'Сумма недействительна',
+         amountIsNotSufficient: 'Суммы не хватает!',
+         successful: 'Успешно',
+         transactionSent: 'Транзакция отправлена.',
+         checkTransactionOnBlockscout: 'Проверить транзакцию на blockscout'
+      },
+      deposit: {
+         receive: 'Получить',
+         address: 'Адрес',
+         fundYourWallet: 'Пополните свой кошелек'
+      },
+      wallet: {
+         accessWalletBy: 'Доступ к кошельку с помощью закрытого ключа',
+         enterPrivateKey: 'Введите закрытый ключ',
+         privateKeyIsRequired: 'Требуется закрытый ключ',
+         next: 'следующий',
+         youCanUseThisTesting: 'Вы можете использовать этот тестовый закрытый ключ'
+      }
    }
 };

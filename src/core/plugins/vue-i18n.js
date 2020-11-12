@@ -9,7 +9,7 @@ import { locale as de } from '../config/i18n/de';
 import { locale as fr } from '../config/i18n/fr';
 import { locale as cn } from '../config/i18n/cn';
 import { locale as es } from '../config/i18n/es';
-import { locale as ru } from '../config/i18n/fr';
+import { locale as ru } from '../config/i18n/ru';
 
 let messages = {};
 messages = { ...messages, en, de, fr, cn, es, ru };

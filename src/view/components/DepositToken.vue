@@ -2,7 +2,7 @@
     <v-dialog v-model="utils.showModal" width="500">
         <v-card class="pb-4">
             <div class="card-header">
-                <h5 class="card-title mb-0">Receive {{ swap.name }}</h5>
+                <h5 class="card-title mb-0">{{ $t('modals.deposit.receive') }} {{ swap.name }}</h5>
                 <div @click="closeModal()" class="closeIcon-container">
                     <img alt="close" class="close-icon" src="/images/close.png"/>
                 </div>
@@ -12,7 +12,7 @@
                     <qrcode-vue :value="swap.address" size="150" level="H" />
                 </div>
             </div>
-            <div class="subheading m-3 mb-0 pb-2 pt-2">Address</div>
+            <div class="subheading m-3 mb-0 pb-2 pt-2">{{ $t('modals.deposit.address') }}</div>
             <div class="address-inputContainer mt-0 m-3">
                 <input :value="swap.address" class="address-input" disabled>
                 <button @click="copy(swap.address)" class="copy-address">
@@ -21,7 +21,7 @@
             </div>
             <a class="pl-3" href="https://celo.org/developers/faucet"
                style="color: #1d77d8 !important;font-weight: 500;text-decoration: underline;" target="_blank">
-                Fund your wallet (Celo Faulcet)
+                {{ $t('modals.deposit.fundYourWallet') }} (Celo Faulcet)
             </a>
         </v-card>
     </v-dialog>
