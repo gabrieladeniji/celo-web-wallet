@@ -117,14 +117,19 @@
          },
          resetAmountField() {
             this.utils.amount_not_sufficient = false;
+         },
+         resetFields() {
+            this.swap.amount = '';
+            this.swap.receiver = '';
+            this.utils.transaction_sent = false;
+            this.utils.transaction_active = true;
+            this.utils.amount_not_sufficient = false;
          }
       },
       mounted() {
          bus.$on('open_send_gold_token', () => {
+            this.resetFields();
             this.utils.show_modal = true;
-            this.utils.transaction_sent = false;
-            this.utils.transaction_active = true;
-            this.utils.amount_not_sufficient = false;
          });
       }
    }
