@@ -118,6 +118,9 @@
       mounted() {
          bus.$on('open_send_stable_token', () => {
             this.utils.show_modal = true;
+            this.utils.transaction_sent = false;
+            this.utils.transaction_active = true;
+            this.utils.amount_not_sufficient = false;
          });
       }
    }
