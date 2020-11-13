@@ -7,7 +7,7 @@ export const locale = {
       },
       header: {
          celo_web: 'Celo网络钱包',
-         easy_way: '存储，发送，接收和持有celo令牌的简便方法。'
+         easy_way: '轻松存储，发送，接收和持有celo货币的方法。'
       },
       footer: {
          powered: '供电'

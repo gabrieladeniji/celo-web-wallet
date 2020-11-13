@@ -7,7 +7,7 @@ export const locale = {
       },
       header: {
          celo_web: 'Portefeuille Web Celo',
-         easy_way: 'Un moyen facile de stocker, envoyer, recevoir et conserver des jetons celo.'
+         easy_way: 'Una forma sencilla de almacenar, enviar, recibir y retener monedas celo.'
       },
       footer: {
          powered: 'Alimenté par'

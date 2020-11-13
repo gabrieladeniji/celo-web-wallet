@@ -7,7 +7,7 @@ export const locale = {
       },
       header: {
          celo_web: 'Веб-кошелек Celo',
-         easy_way: 'Простой способ хранить, отправлять, получать и удерживать токены celo.'
+         easy_way: 'Una forma sencilla de almacenar, enviar, recibir y retener monedas celo.'
       },
       footer: {
          powered: 'Питаться от'

@@ -7,7 +7,7 @@ export const locale = {
       },
       header: {
          celo_web: 'Celo Web Wallet',
-         easy_way: 'Einfache Möglichkeit zum Speichern, Senden, Empfangen und Speichern von Celo-Token.'
+         easy_way: 'Einfache Möglichkeit zum Speichern, Senden, Empfangen und Halten von Celo-Währungen.'
       },
       footer: {
          powered: 'Unterstützt von'

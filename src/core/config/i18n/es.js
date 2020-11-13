@@ -7,7 +7,7 @@ export const locale = {
       },
       header: {
          celo_web: 'Cartera web Celo',
-         easy_way: 'Una forma sencilla de almacenar, enviar, recibir y guardar tokens de celo.'
+         easy_way: 'Una forma sencilla de almacenar, enviar, recibir y retener monedas celo.'
       },
       footer: {
          powered: 'Energizado por'

@@ -7,7 +7,7 @@ export const locale = {
       },
       header: {
          celo_web: 'Celo web wallet',
-         easy_way: 'Easy way to store, send, receive and hold celo tokens.'
+         easy_way: 'Easy way to store, send, receive and hold celo currencies.'
       },
       footer: {
          powered: 'Powered by'
