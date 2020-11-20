@@ -26,16 +26,20 @@ export const locale = {
          importYourCelo: 'Importez votre portefeuille celo avec votre clé privée',
       },
       goldToken: {
-         celoGoldBalance: 'Balance d\'or Celo',
+         celoGoldBalance: 'Celo Équilibre',
          send: 'Envoyer',
          deposit: 'Dépôt',
-         walletPrivateKey: 'Clé privée du portefeuille'
+         walletPrivateKey: 'Clé privée du portefeuille',
+         showKey: 'Clave Mostrar',
+         hideKey: 'Masquer la clé'
       },
       stableToken: {
          celoUsdBalance: 'Solde Celo USD',
          send: 'Envoyer',
          deposit: 'Dépôt',
-         walletPrivateKey: 'Clé privée du portefeuille'
+         walletPrivateKey: 'Clé privée du portefeuille',
+         showKey: 'Clave Mostrar',
+         hideKey: 'Masquer la clé'
       }
    },
    modals: {
@@ -62,6 +66,11 @@ export const locale = {
          privateKeyIsRequired: 'Une clé privée est requise',
          next: 'Suivant',
          youCanUseThisTesting: 'Vous pouvez utiliser cette clé privée de test'
+      },
+      privateKeyWarning: {
+         warning: 'Attention',
+         thisIsYourPrivate: 'Ceci est votre clé privée, jamais, en aucun cas, vous ne devez la partager avec qui que ce soit.',
+         okIGetIt: 'Ok, je comprends'
       }
    }
 };

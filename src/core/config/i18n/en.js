@@ -13,7 +13,7 @@ export const locale = {
          powered: 'Powered by'
       },
       tabHeader: {
-         celo_gold: 'CELO GOLD WALLET',
+         celo_gold: 'CELO WALLET',
          celo_usd: 'CELO USD WALLET'
       },
    },
@@ -26,16 +26,20 @@ export const locale = {
          importYourCelo: 'Import your celo wallet with your private key',
       },
       goldToken: {
-         celoGoldBalance: 'Celo Gold Balance',
+         celoGoldBalance: 'Celo Balance',
          send: 'Send',
          deposit: 'Deposit',
-         walletPrivateKey: 'Wallet private key'
+         walletPrivateKey: 'Wallet private key',
+         showKey: 'Show key',
+         hideKey: 'Hide key'
       },
       stableToken: {
          celoUsdBalance: 'Celo USD Balance',
          send: 'Send',
          deposit: 'Deposit',
-         walletPrivateKey: 'Wallet private key'
+         walletPrivateKey: 'Wallet private key',
+         showKey: 'Show key',
+         hideKey: 'Hide key'
       }
    },
    modals: {
@@ -62,6 +66,11 @@ export const locale = {
          privateKeyIsRequired: 'Private key is required',
          next: 'Next',
          youCanUseThisTesting: 'You can use this testing Private Key'
+      },
+      privateKeyWarning: {
+         warning: 'Warning',
+         thisIsYourPrivate: 'This is your private key, never, under any circumstances, should you share it with anyone.',
+         okIGetIt: 'Ok, I get it'
       }
    }
 };

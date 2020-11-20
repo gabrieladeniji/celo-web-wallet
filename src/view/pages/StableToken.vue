@@ -22,8 +22,16 @@
                             <div @click="openSendModal()" class="btn-deposit">{{ $t('pages.stableToken.send') }}</div>
                             <div @click="openDepositModal()" class="btn-deposit">{{ $t('pages.stableToken.deposit') }}</div>
                         </div>
-                        <div class="font-weight-bold body-2 pt-4">{{ $t('pages.stableToken.walletPrivateKey') }}</div>
-                        <p class="body-2 text-muted">
+                        <div class="font-weight-bold body-2 pt-4 text-muted">
+                           {{ $t('pages.stableToken.walletPrivateKey') }}:
+                           <button v-if="!utils.show_pk" @click="togglePk" class="show-btn">
+                              {{ $t('pages.stableToken.showKey') }} <i class="fa fa-eye"></i>
+                           </button>
+                           <button v-else class="show-btn" @click="togglePk">
+                              {{ $t('pages.stableToken.hideKey') }} <i class="fa fa-eye-slash"></i>
+                           </button>
+                        </div>
+                        <p v-if="utils.show_pk" class="body-2 pt-2 text-muted">
                             {{wallet.private_key}}
                         </p>
                     </div>
@@ -43,7 +51,11 @@
    export default {
       name: "StableToken",
       data() {
-         return {}
+         return {
+            utils: {
+               show_pk: false,
+            }
+         }
       },
       components: {
          appTransactionHistory: TransactionHistory
@@ -61,8 +73,11 @@
          openDepositModal() {
             bus.$emit('open_deposit_token', {name: 'cUSD', address: this.wallet.address});
          },
-         openSwapModal() {
-
+         togglePk() {
+            if(!this.utils.show_pk) {
+               bus.$emit('open_private_key_warning');
+            }
+            this.utils.show_pk = !this.utils.show_pk;
          }
       },
       async mounted() {

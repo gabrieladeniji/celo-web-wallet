@@ -26,16 +26,20 @@ export const locale = {
          importYourCelo: 'Импортируйте свой кошелек celo с вашим приватным ключом',
       },
       goldToken: {
-         celoGoldBalance: 'Celo Gold Остаток средств',
+         celoGoldBalance: 'Celo Остаток средств',
          send: 'послать',
          deposit: 'Депозит',
-         walletPrivateKey: 'Приватный ключ кошелька'
+         walletPrivateKey: 'Приватный ключ кошелька',
+         showKey: 'Показать ключ',
+         hideKey: 'Скрыть ключ'
       },
       stableToken: {
          celoUsdBalance: 'Баланс Celo в долларах США',
          send: 'послать',
          deposit: 'Депозит',
-         walletPrivateKey: 'Приватный ключ кошелька'
+         walletPrivateKey: 'Приватный ключ кошелька',
+         showKey: 'Показать ключ',
+         hideKey: 'Скрыть ключ'
       }
    },
    modals: {
@@ -62,6 +66,11 @@ export const locale = {
          privateKeyIsRequired: 'Требуется закрытый ключ',
          next: 'следующий',
          youCanUseThisTesting: 'Вы можете использовать этот тестовый закрытый ключ'
+      },
+      privateKeyWarning: {
+         warning: 'Предупреждение',
+         thisIsYourPrivate: 'Это ваш закрытый ключ, никогда и ни при каких обстоятельствах не делитесь им с кем-либо.',
+         okIGetIt: 'Хорошо, я понимаю'
       }
    }
 };

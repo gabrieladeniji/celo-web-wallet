@@ -26,16 +26,20 @@ export const locale = {
          importYourCelo: '使用私钥导入您的celo钱包',
       },
       goldToken: {
-         celoGoldBalance: '塞洛黄金平衡',
+         celoGoldBalance: '塞洛平衡',
          send: '发送',
          deposit: '存款',
-         walletPrivateKey: '钱包私钥'
+         walletPrivateKey: '钱包私钥',
+         showKey: '显示键',
+         hideKey: '隐藏键'
       },
       stableToken: {
          celoUsdBalance: 'Celo USD余额',
          send: '发送',
          deposit: '存款',
-         walletPrivateKey: '钱包私钥'
+         walletPrivateKey: '钱包私钥',
+         showKey: '显示键',
+         hideKey: '隐藏键'
       }
    },
    modals: {
@@ -62,6 +66,11 @@ export const locale = {
          privateKeyIsRequired: '需要私钥',
          next: '下一个',
          youCanUseThisTesting: '您可以使用此测试私钥'
+      },
+      privateKeyWarning: {
+         warning: '警告',
+         thisIsYourPrivate: '这是您的私钥，在任何情况下都不要与任何人共享。',
+         okIGetIt: '好的我明白了'
       }
    }
 };

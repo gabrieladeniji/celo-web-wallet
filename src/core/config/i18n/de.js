@@ -13,7 +13,7 @@ export const locale = {
          powered: 'Unterstützt von'
       },
       tabHeader: {
-         celo_gold: 'CELO GOLD BRIEFTASCHE',
+         celo_gold: 'CELO BRIEFTASCHE',
          celo_usd: 'CELO USD BRIEFTASCHE'
       },
    },
@@ -26,16 +26,20 @@ export const locale = {
          importYourCelo: 'Importieren Sie Ihre Celo-Brieftasche mit Ihrem privaten Schlüssel',
       },
       goldToken: {
-         celoGoldBalance: 'Celo Gold Goldbilanz',
+         celoGoldBalance: 'Celo Balance',
          send: 'Senden',
          deposit: 'Anzahlung',
-         walletPrivateKey: 'Privater Schlüssel für die Brieftasche'
+         walletPrivateKey: 'Privater Schlüssel für die Brieftasche',
+         showKey: 'Schlüssel anzeigen',
+         hideKey: 'Schlüssel ausblenden'
       },
       stableToken: {
          celoUsdBalance: 'Celo USD Saldo',
          send: 'Senden',
          deposit: 'Anzahlung',
-         walletPrivateKey: 'Privater Schlüssel für die Brieftasche'
+         walletPrivateKey: 'Privater Schlüssel für die Brieftasche',
+         showKey: 'Schlüssel anzeigen',
+         hideKey: 'Schlüssel ausblenden'
       }
    },
    modals: {
@@ -62,6 +66,11 @@ export const locale = {
          privateKeyIsRequired: 'Privater Schlüssel ist erforderlich',
          next: 'Nächster',
          youCanUseThisTesting: 'Sie können diesen privaten Testschlüssel verwenden'
+      },
+      privateKeyWarning: {
+         warning: 'Warnung',
+         thisIsYourPrivate: 'Dies ist Ihr privater Schlüssel. Geben Sie ihn unter keinen Umständen an Dritte weiter.',
+         okIGetIt: 'Okay, ich habs verstanden'
       }
    }
 };
