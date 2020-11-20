@@ -8,7 +8,7 @@
                     </div>
                     <div style="position: absolute;right: 25px;top: 14px;">
                         <div class="pb-1" style="color: rgb(152, 161, 178);font-size: 14px;">
-                            1 cGLD ≈ <span style="font-size: 13px;color: #4eaf0a;">${{ gold.price }}</span>
+                            1 celo ≈ <span style="font-size: 13px;color: #4eaf0a;">${{ gold.price }}</span>
                         </div>
                     </div>
                     <div class="coinWallet-details" style="max-width: inherit !important;">
@@ -16,7 +16,7 @@
                             {{ $t('pages.goldToken.celoGoldBalance') }}
                         </div>
                         <div>
-                            <span style="font-size: 20px;">{{ gold.balance }} cGLD</span>
+                            <span style="font-size: 20px;">{{ gold.balance }} celo</span>
                         </div>
                         <div class="coinWallet-actionBtns mt-3">
                             <div @click="openSendModal()" class="btn-deposit">{{ $t('pages.goldToken.send') }}</div>
@@ -60,7 +60,7 @@
             bus.$emit('open_send_gold_token');
          },
          openDepositModal() {
-            bus.$emit('open_deposit_token', {name: 'cGLD', address: this.wallet.address});
+            bus.$emit('open_deposit_token', {name: 'celo', address: this.wallet.address});
          },
          openSwapModal() {
             bus.$emit('open_swap_gold_token');

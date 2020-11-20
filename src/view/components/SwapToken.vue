@@ -2,7 +2,7 @@
     <v-dialog v-model="utils.show_modal" width="500">
         <v-card class="pb-2">
             <div class="card-header">
-                <h5 class="card-title mb-0">Swap cGLD</h5>
+                <h5 class="card-title mb-0">Swap celo</h5>
                 <div @click="closeModal()" class="closeIcon-container">
                     <img alt="close" class="close-icon" src="/images/close.png"/>
                 </div>
@@ -10,7 +10,7 @@
 
             <div class="m-5" v-if="utils.transaction_active">
                 <div class="text-left pb-2">From</div>
-                <v-text-field placeholder="0.0000" solo suffix="cGLD"></v-text-field>
+                <v-text-field placeholder="0.0000" solo suffix="celo"></v-text-field>
                 <div class="text-center">
                     <img alt="img" src="/images/swap_vert.png" width="15"/>
                 </div>
@@ -28,7 +28,7 @@
                     <img alt="img" class="pt-2" src="/images/success-trade.png" style="width: 50px; margin: 0 auto;"/>
                     <h2 class="pt-3 pb-3">Successful</h2>
                     <div class="body-2">
-                        Your swap of <strong>0.2939 Cgld </strong> to <strong>300 cUSD</strong> is Successful.
+                        Your swap of <strong>0.2939 celo </strong> to <strong>300 cUSD</strong> is Successful.
                     </div>
                     <div class="body-2 mt-5 font-weight-bold">Please reload your cUSD wallet to update balance</div>
                 </div>

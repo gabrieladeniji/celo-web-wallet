@@ -3,7 +3,7 @@
       <v-card class="pb-2">
 
          <div class="card-header">
-            <h5 class="card-title mb-0">{{ $t('modals.send.send') }} cGLD</h5>
+            <h5 class="card-title mb-0">{{ $t('modals.send.send') }} celo</h5>
             <div @click="closeModal()" class="closeIcon-container">
                <img alt="close" class="close-icon" src="/images/close.png"/>
             </div>
@@ -18,7 +18,7 @@
             <label class="text-left">
                {{ $t('modals.send.howMuchDoYouWantToSend') }}
             </label>
-            <v-text-field @input="onInputAmount()" prefix="cGLD" solo
+            <v-text-field @input="onInputAmount()" prefix="celo" solo
                           v-model.number="$v.swap.amount.$model"></v-text-field>
             <div class="error-text" v-if="!$v.swap.amount.required">
                {{ $t('modals.send.amountIsRequired') }}
