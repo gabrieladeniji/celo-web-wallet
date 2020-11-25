@@ -29,7 +29,7 @@ const state = {
    },
    stable: {
       done: false,
-      price: 0.00,
+      price: 1,
       balance: 0,
       transactions: []
    }
