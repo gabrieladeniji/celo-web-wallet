@@ -1,5 +1,10 @@
 # Celo web wallet | Paychant
 
+
+##### Link to the celo web wallet
+[https://celo-wallet.paychant.com](https://celo-wallet.paychant.com)
+
+
 # This is a open source web wallet develop on the celo blockchain
 
 
