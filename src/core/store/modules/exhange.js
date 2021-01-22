@@ -16,6 +16,7 @@ export const EXTRACT_ADDRESS_TRANSACTIONS = 'extractAddressTransactions';
 // mutations
 export const RESET_BALANCE = 'resetTokenBalance';
 export const SET_GOLD_PRICE = 'setGoldPrice';
+export const SET_STABLE_PRICE = 'setStablePrice';
 export const SET_GOLD_BALANCE = 'setGoldTokenBalance';
 export const SET_STABLE_BALANCE = 'setStableTokenBalance';
 
@@ -29,7 +30,7 @@ const state = {
    },
    stable: {
       done: false,
-      price: 1,
+      price: 0.0,
       balance: 0,
       transactions: []
    }
@@ -61,6 +62,9 @@ const mutations = {
    },
    [SET_GOLD_PRICE](state, price) {
       state.gold['price'] = price;
+   },
+   [SET_STABLE_PRICE](state, price) {
+      state.stable['price'] = price;
    }
 };
 
@@ -125,7 +129,6 @@ const actions = {
             sender_pk: context.getters.wallet.private_key
          };
          celoService.swapStableToGoldToken(data).then((res) => {
-            console.log(res);
             resolve(res);
          }).catch((err) => {
             reject(`[swapGoldToken] => ${err}`);
@@ -137,12 +140,11 @@ const actions = {
    },
    [FETCH_STABLE_PRICE](context) {
       return new Promise((resolve, reject) => {
-         apiService.setBaseUrl('http://baklava.thecelo.com');
-         apiService.getApi('/api/v0.1', {method: 'getprices'}).then((res) => {
-            console.log(res);
+         apiService.setBaseUrl('https://api.coingecko.com/api/v3');
+         apiService.getApi('/simple/price', {ids: 'celo-dollar', vs_currencies: 'usd'}).then((res) => {
+            context.commit(SET_STABLE_PRICE, res['celo-dollar'].usd);
          }).catch((e) => {
-            console.log(e);
-            reject(`[fetchStablePrice] => ${e}`);
+            reject(`[fetchGoldPrice] => ${e}`);
          });
       });
    },
@@ -151,9 +153,7 @@ const actions = {
          apiService.setBaseUrl('https://api.coingecko.com/api/v3');
          apiService.getApi('/simple/price', {ids: 'celo-gold', vs_currencies: 'usd'}).then((res) => {
             context.commit(SET_GOLD_PRICE, res['celo-gold'].usd);
-            console.log(res);
          }).catch((e) => {
-            console.log(e);
             reject(`[fetchGoldPrice] => ${e}`);
          });
       });

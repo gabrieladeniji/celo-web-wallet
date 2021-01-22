@@ -11,7 +11,7 @@ Vue.config.productionTip = false;
 export const bus = new Vue();
 
 // Initialize celo alfajores environment (https://alfajores-forno.celo-testnet.org | https://forno.celo.org)
-celoService.init('https://forno.celo.org');
+celoService.init('https://alfajores-forno.celo-testnet.org');
 accountService.init();
 
 // Vue 3rd party plugins
