@@ -11,13 +11,15 @@ const celoService = {
    async getGoldTokenBalance(address) {
       const goldToken = await window.kit.contracts.getGoldToken();
       const bal = await goldToken.balanceOf(address);
-      return window.kit.web3.utils.fromWei(bal.toString(), 'ether');
+      const balBn = window.kit.web3.utils.toBN(bal);
+      return window.kit.web3.utils.fromWei(balBn.toString(), 'ether');
    },
 
    async getStableTokenBalance(address) {
       const stableToken = await window.kit.contracts.getStableToken();
       const bal = await stableToken.balanceOf(address);
-      return window.kit.web3.utils.fromWei(bal.toString(), 'ether');
+      const balBn = window.kit.web3.utils.toBN(bal);
+      return window.kit.web3.utils.fromWei(balBn.toString(), 'ether');
    },
 
    async sendGoldToken({sender, sender_pk, receiver, amount}) {

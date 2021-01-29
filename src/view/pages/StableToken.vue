@@ -16,7 +16,7 @@
                             {{ $t('pages.stableToken.celoUsdBalance') }}
                         </div>
                         <div>
-                            <span style="font-size: 20px;">{{ stable.balance }} cUSD</span>
+                            <span style="font-size: 20px;">{{ stable.balance | amountFormatter }} cUSD</span>
                         </div>
                         <div class="coinWallet-actionBtns mt-3">
                             <div @click="openSendModal()" class="btn-deposit">{{ $t('pages.stableToken.send') }}</div>
@@ -45,6 +45,7 @@
 
    import {bus} from '../../main';
    import {mapGetters} from 'vuex';
+   import numberMixin from '../../core/mixins/number.mixin';
    import TransactionHistory from '../components/TransactionHistory';
    import {FETCH_STABLE_PRICE, FETCH_STABLE_BALANCE} from '../../core/store/modules/exhange';
 
@@ -66,6 +67,7 @@
             'wallet'
          ])
       },
+      mixins: [numberMixin],
       methods: {
          openSendModal() {
             bus.$emit('open_send_stable_token');
