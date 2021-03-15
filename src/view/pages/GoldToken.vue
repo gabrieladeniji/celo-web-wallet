@@ -16,7 +16,7 @@
                             {{ $t('pages.goldToken.celoGoldBalance') }}
                         </div>
                         <div>
-                            <span style="font-size: 20px;">{{ gold.balance }} celo</span>
+                            <span style="font-size: 20px;">{{ gold.balance | amountFormatter }} celo</span>
                         </div>
                         <div class="coinWallet-actionBtns mt-3">
                             <div @click="openSendModal()" class="btn-deposit">{{ $t('pages.goldToken.send') }}</div>
@@ -46,6 +46,7 @@
 
    import {bus} from '../../main';
    import {mapGetters} from 'vuex';
+   import numberMixin from '../../core/mixins/number.mixin';
    import TransactionHistory from '../components/TransactionHistory';
    import {FETCH_GOLD_BALANCE, FETCH_GOLD_PRICE} from '../../core/store/modules/exhange';
 
@@ -67,6 +68,7 @@
             'wallet'
          ])
       },
+      mixins: [numberMixin],
       methods: {
          openSendModal() {
             bus.$emit('open_send_gold_token');
