@@ -21,6 +21,7 @@
                         <div class="coinWallet-actionBtns mt-3">
                             <div @click="openSendModal()" class="btn-deposit">{{ $t('pages.stableToken.send') }}</div>
                             <div @click="openDepositModal()" class="btn-deposit">{{ $t('pages.stableToken.deposit') }}</div>
+                            <div @click="openSwapModal()" class="btn-deposit">Swap</div>
                         </div>
                         <div class="font-weight-bold body-2 pt-4 text-muted">
                            {{ $t('pages.stableToken.walletPrivateKey') }}:
@@ -43,11 +44,11 @@
 
 <script>
 
-   import {bus} from '../../main';
+   import {bus} from '@/main';
    import {mapGetters} from 'vuex';
    import numberMixin from '../../core/mixins/number.mixin';
    import TransactionHistory from '../components/TransactionHistory';
-   import {FETCH_STABLE_PRICE, FETCH_STABLE_BALANCE} from '../../core/store/modules/exhange';
+   import {FETCH_STABLE_PRICE, FETCH_STABLE_BALANCE} from '@/core/store/modules/exhange';
 
    export default {
       name: "StableToken",
@@ -69,6 +70,9 @@
       },
       mixins: [numberMixin],
       methods: {
+         openSwapModal() {
+            bus.$emit('open_swap_gold_token');
+         },
          openSendModal() {
             bus.$emit('open_send_stable_token');
          },

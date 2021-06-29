@@ -3,14 +3,15 @@ import celoService from '../../service/celo.service';
 
 
 // actions
-export const SWAP_GOLD_TOKEN = 'swapStableToken';
 export const SEND_GOLD_TOKEN = 'sendGoldToken';
 export const FETCH_GOLD_PRICE = 'fetchGoldTokenPrice';
 export const SEND_STABLE_TOKEN = 'sendStableToken';
 export const FETCH_STABLE_PRICE = 'fetchStableTokenPrice';
 export const FETCH_GOLD_BALANCE = 'fetchGoldTokenBalance';
+export const SWAP_STABLE_TO_GOLD = 'swapStableToGold';
 export const FETCH_STABLE_BALANCE = 'fetchStableTokenBalance';
 export const CLEAR_ASSETS_BALANCE = 'clearAssetsBalance';
+export const CONVERT_STABLE_TO_GOLD = 'convertStableToGold';
 export const EXTRACT_ADDRESS_TRANSACTIONS = 'extractAddressTransactions';
 
 // mutations
@@ -121,17 +122,17 @@ const actions = {
          })
       });
    },
-   [SWAP_GOLD_TOKEN](context) {
+   [SWAP_STABLE_TO_GOLD](context, amount) {
       return new Promise((resolve, reject) => {
          let data = {
-            amount: parseFloat(5),
+            amount: amount,
             sender: context.getters.wallet.address,
             sender_pk: context.getters.wallet.private_key
          };
          celoService.swapStableToGoldToken(data).then((res) => {
             resolve(res);
          }).catch((err) => {
-            reject(`[swapGoldToken] => ${err}`);
+            reject(`[swapStableToGoldToken] => ${err}`);
          });
       });
    },
@@ -151,11 +152,21 @@ const actions = {
    [FETCH_GOLD_PRICE](context) {
       return new Promise((resolve, reject) => {
          apiService.setBaseUrl('https://api.coingecko.com/api/v3');
-         apiService.getApi('/simple/price', {ids: 'celo-gold', vs_currencies: 'usd'}).then((res) => {
-            context.commit(SET_GOLD_PRICE, res['celo-gold'].usd);
+         apiService.getApi('/simple/price', {ids: 'celo', vs_currencies: 'usd'}).then((res) => {
+            console.log(res);
+            context.commit(SET_GOLD_PRICE, res['celo'].usd);
          }).catch((e) => {
             reject(`[fetchGoldPrice] => ${e}`);
          });
+      });
+   },
+   [CONVERT_STABLE_TO_GOLD](context, amount) {
+      return new Promise((resolve, reject) => {
+         celoService.convertStableToGold(amount).then((cvt) => {
+            resolve(cvt);
+         }).catch((err) => {
+            reject(`[convertStableToGoldToken] => ${err}`);
+         })
       });
    },
    [EXTRACT_ADDRESS_TRANSACTIONS]() {

@@ -14,6 +14,7 @@
          <app-import-wallet/>
          <app-deposit-token/>
          <app-send-gold-token/>
+         <app-swap-stable-token/>
          <app-send-stable-token/>
          <app-private-key-warning/>
 
@@ -38,11 +39,12 @@
    import ImportWallet from '../components/ImportWallet';
    import DepositToken from '../components/DepositToken';
    import SendGoldToken from '../components/SendGoldToken';
+   import SwapStableToken from '../components/SwapStableToken';
    import SendStableToken from '../components/SendStableToken';
    import PrivateKeyWarning from '../components/PrivateKeyWarning';
 
    import {mapGetters} from 'vuex';
-   import {FETCH_LOCALE} from '../../core/store/modules/locale';
+   import {FETCH_LOCALE} from '@/core/store/modules/locale';
 
    export default {
       name: "Layout",
@@ -55,6 +57,7 @@
          appDepositToken: DepositToken,
          appSendGoldToken: SendGoldToken,
          appSendStableToken: SendStableToken,
+         appSwapStableToken: SwapStableToken,
          appPrivateKeyWarning: PrivateKeyWarning
       },
       computed: {

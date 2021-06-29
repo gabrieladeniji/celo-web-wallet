@@ -44,11 +44,11 @@
 
 <script>
 
-   import {bus} from '../../main';
+   import {bus} from '@/main';
    import {mapGetters} from 'vuex';
    import numberMixin from '../../core/mixins/number.mixin';
    import TransactionHistory from '../components/TransactionHistory';
-   import {FETCH_GOLD_BALANCE, FETCH_GOLD_PRICE} from '../../core/store/modules/exhange';
+   import {FETCH_GOLD_BALANCE, FETCH_GOLD_PRICE} from '@/core/store/modules/exhange';
 
    export default {
       name: "GoldToken",
@@ -84,8 +84,8 @@
          }
       },
       async mounted() {
-         await this.$store.dispatch(FETCH_GOLD_BALANCE);
          await this.$store.dispatch(FETCH_GOLD_PRICE);
+         await this.$store.dispatch(FETCH_GOLD_BALANCE);
       },
    }
 </script>
