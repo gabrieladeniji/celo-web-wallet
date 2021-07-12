@@ -29,7 +29,6 @@
     "qrcode.vue": "^1.7.0",
     "sass-loader": "^7.1.0",
     "less-loader": "^4.1.0",
-    "bignumber.js": "9.0.1",
     "flag-icon-css": "^3.3.0",
     "vue-clipboard2": "^0.3.1",
     "@celo/contractkit": "1.2.0",
