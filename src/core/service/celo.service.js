@@ -1,5 +1,4 @@
 import Web3 from 'web3';
-import { BigNumber } from 'bignumber.js';
 import { CeloContract, newKitFromWeb3 } from '@celo/contractkit';
 
 const celoService = {
@@ -8,7 +7,7 @@ const celoService = {
    },
 
    __toString(amount) {
-      return new BigNumber(amount).toString();
+      return window.kit.web3.utils.toBN(amount);
    },
 
    async getGoldTokenBalance(address) {
@@ -49,7 +48,7 @@ const celoService = {
       const amountWie = window.kit.web3.utils.toWei(this.__toString(amount), 'ether');
       const exchange = await window.kit.contracts.getExchange();
       const goldToken = await exchange.quoteStableSell(amountWie);
-      return web3.utils.fromWei(window.kit.web3.utils.toBN(goldToken), 'ether');
+      return web3.utils.fromWei(this.__toString(goldToken), 'ether');
    },
 
    async swapStableToGoldToken({sender, sender_pk, amount}) {
