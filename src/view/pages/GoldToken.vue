@@ -84,8 +84,8 @@
          }
       },
       async mounted() {
-         await this.$store.dispatch(FETCH_GOLD_PRICE);
          await this.$store.dispatch(FETCH_GOLD_BALANCE);
+         await this.$store.dispatch(FETCH_GOLD_PRICE);
       },
    }
 </script>
