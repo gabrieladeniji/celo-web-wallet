@@ -6,7 +6,7 @@ const celoService = {
       window.kit = newKitFromWeb3(new Web3(url));
    },
 
-   __toString(amount) {
+   __toBN(amount) {
       return window.kit.web3.utils.toBN(amount);
    },
 
@@ -27,7 +27,7 @@ const celoService = {
    async sendGoldToken({sender, sender_pk, receiver, amount}) {
       window.kit.connection.addAccount(sender_pk);
       const goldToken = await window.kit.contracts.getGoldToken();
-      const amountWei = window.kit.web3.utils.toWei(this.__toString(amount), 'ether');
+      const amountWei = window.kit.web3.utils.toWei(this.__toBN(amount), 'ether');
       const tx = await goldToken.transfer(receiver, amountWei).send({
          from: sender
       });
@@ -37,7 +37,7 @@ const celoService = {
    async sendStableToken({sender, sender_pk, receiver, amount}) {
       window.kit.connection.addAccount(sender_pk);
       const stableToken = await window.kit.contracts.getStableToken();
-      const amountWei = window.kit.web3.utils.toWei(this.__toString(amount), 'ether');
+      const amountWei = window.kit.web3.utils.toWei(this.__toBN(amount), 'ether');
       const tx = await stableToken.transfer(receiver, amountWei).send({
          from: sender
       });
@@ -45,40 +45,33 @@ const celoService = {
    },
 
    async convertStableToGold(amount) {
-      const amountWie = window.kit.web3.utils.toWei(this.__toString(amount), 'ether');
+      const amountWie = window.kit.web3.utils.toWei(this.__toBN(amount), 'ether');
       const exchange = await window.kit.contracts.getExchange();
       const goldToken = await exchange.quoteStableSell(amountWie);
-      return web3.utils.fromWei(this.__toString(goldToken), 'ether');
+      return web3.utils.fromWei(this.__toBN(goldToken), 'ether');
    },
 
    async swapStableToGoldToken({sender, sender_pk, amount}) {
+      window.kit.defaultAccount = sender;
       window.kit.connection.addAccount(sender_pk);
 
       const exchange = await window.kit.contracts.getExchange();
-      const amountWie = window.kit.web3.utils.toWei(this.__toString(amount), 'ether');
+      const amountWie = window.kit.web3.utils.toWei(this.__toBN(amount), 'ether');
       const stableToken = await window.kit.contracts.getStableToken();
 
       await window.kit.setFeeCurrency(CeloContract.StableToken);
       const goldToken = await exchange.quoteStableSell(amountWie);
 
-      const approveTx = await stableToken.approve(exchange.address, amountWie).send({
-         from: sender,
-         feeCurrency: stableToken.address
-      });
+      const approveTx = await stableToken.approve(exchange.address, amountWie).send({feeCurrency: stableToken.address});
       const approveReceipt = await approveTx.waitReceipt();
-      console.log(approveReceipt);
 
-      // const goldToken = await exchange.quoteStableSell(amountWie);
-      const sellTx = await exchange.sellStable(amountWie, goldToken).send();
-      console.log(sellTx);
+      const sellTx = await exchange.sellStable(amountWie, goldToken).send({feeCurrency: stableToken.address});
       const sellReceipt = await sellTx.waitReceipt();
 
-      //
-      console.log('eth', amountWie);
-      console.log('sell raw', stableToken.toString());
-      console.log('sell', window.kit.web3.utils.fromWei(stableToken, 'ether'));
-
-      return [approveReceipt, sellReceipt];
+      return {
+         sell_receipt: sellReceipt.transactionHash,
+         approve_receipt: approveReceipt.transactionHash
+      };
    },
 
    async convertGoldToStableToken(amount) {
