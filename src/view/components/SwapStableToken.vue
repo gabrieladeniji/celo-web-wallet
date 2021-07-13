@@ -8,7 +8,7 @@
             </div>
          </div>
 
-         <div class="m-5" v-if="utils.transaction_active">
+         <div class="m-5" v-if="utils.transaction_active" ref="formContent">
             <div class="text-left pb-2">From (Cusd)</div>
             <v-text-field placeholder="0.0000" v-model="swap.cusd" @keyup="onConvertStable" solo
                           suffix="cUSD"></v-text-field>
