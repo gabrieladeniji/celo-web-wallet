@@ -54,18 +54,18 @@ const celoService = {
    async swapStableToGoldToken({sender, sender_pk, amount}) {
       window.kit.defaultAccount = sender;
       window.kit.connection.addAccount(sender_pk);
+      await window.kit.setFeeCurrency(CeloContract.StableToken);
 
       const exchange = await window.kit.contracts.getExchange();
       const amountWie = window.kit.web3.utils.toWei(this.__toBN(amount), 'ether');
-      const stableToken = await window.kit.contracts.getStableToken();
 
-      await window.kit.setFeeCurrency(CeloContract.StableToken);
+      const stableToken = await window.kit.contracts.getStableToken();
       const goldToken = await exchange.quoteStableSell(amountWie);
 
-      const approveTx = await stableToken.approve(exchange.address, amountWie).send({feeCurrency: stableToken.address});
+      const approveTx = await stableToken.approve(exchange.address, amountWie).send();
       const approveReceipt = await approveTx.waitReceipt();
 
-      const sellTx = await exchange.sellStable(amountWie, goldToken).send({feeCurrency: stableToken.address});
+      const sellTx = await exchange.sellStable(amountWie, goldToken).send({gas: 300000});
       const sellReceipt = await sellTx.waitReceipt();
 
       return {
